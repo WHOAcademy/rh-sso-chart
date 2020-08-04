@@ -1,6 +1,6 @@
-{{- with .Values.keycloak }}
-{{- if .realms }}
-{{- range $realm := .realms }}
+{{- $keycloakName := .Values.keycloak.name -}}
+{{- if .Values.keycloak.realms }}
+{{- range $realm := .Values.keycloak.realms }}
 ---
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakRealm
@@ -11,11 +11,10 @@ metadata:
 spec:
   instanceSelector:
     matchLabels:
-      app: {{ .name }}
+      app: {{ $keycloakName }}
   realm:
     displayName: {{ $realm.displayName }}
     enabled: {{ $realm.enabled }}
     realm: {{ $realm.name }} 
-{{- end }}
 {{- end }}
 {{- end }}

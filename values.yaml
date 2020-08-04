@@ -19,7 +19,8 @@ keycloak:
         - type: password
           value: 12345
   clients:
-    - name: myclient
+    - id: ''
+      name: myclient
       realm: myrealm
       clientId: myclient
       protocol: openid-connect

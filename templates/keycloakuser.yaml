@@ -1,13 +1,13 @@
-{{- with .Values.keycloak }}
-{{- if .users }}
-{{- range $user := .users }}
+{{- $keycloakName := .Values.keycloak.name -}}
+{{- if .Values.keycloak.users }}
+{{- range $user := .Values.keycloak.users }}
 ---
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakUser
 metadata:
   name: {{ $user.name }} 
   labels:
-    app: {{ .name }}
+    app: {{ $keycloakName }}
 spec:
   user:
     username: {{ $user.username }}
@@ -23,6 +23,5 @@ spec:
   realmSelector:
     matchLabels:
       realm: {{ $user.realm }} 
-{{- end }}
 {{- end }}
 {{- end }}
