@@ -1,0 +1,10 @@
+apiVersion: keycloak.org/v1alpha1
+kind: Keycloak
+metadata:
+  labels:
+    app: {{ .Values.keycloak.name }}
+  name: {{ .Values.keycloak.name }}
+spec:
+  externalAccess:
+    enabled: {{ .Values.keycloak.externalAccess.enabled }}
+  instances: {{ .Values.keycloak.instances }}

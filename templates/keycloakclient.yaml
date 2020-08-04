@@ -1,0 +1,19 @@
+{{- if .Values.keycloak.clients }}
+{{- range $client := .Values.keycloak.clients }}
+---
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: {{ $client.name }} 
+  labels:
+    client: {{ $client.name }}
+spec:
+  realmSelector:
+    matchLabels:
+      realm: {{ $client.realm }}
+  client:
+    clientId: {{ $client.clientId }}
+    protocol: {{ $client.protocol }}
+    rootUrl: {{ $client.rootUrl }}
+{{- end }}
+{{- end }}

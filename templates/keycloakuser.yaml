@@ -1,0 +1,28 @@
+{{- with .Values.keycloak }}
+{{- if .users }}
+{{- range $user := .users }}
+---
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  name: {{ $user.name }} 
+  labels:
+    app: {{ .name }}
+spec:
+  user:
+    username: {{ $user.username }}
+    firstName: {{ $user.firstName }} 
+    lastName: {{ $user.lastName }} 
+    email: {{ $user.email }} 
+    enabled: {{ $user.enabled }} 
+    credentials:
+    {{- range $cred := $user.credentials }}
+        - type: {{ $cred.type }}
+          value: {{ $cred.value | quote}}
+    {{- end }}
+  realmSelector:
+    matchLabels:
+      realm: {{ $user.realm }} 
+{{- end }}
+{{- end }}
+{{- end }}

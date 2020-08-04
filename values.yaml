@@ -1,0 +1,41 @@
+keycloak:
+  name: mykeycloak
+  externalAccess:
+    enabled: true
+  instances: 2
+  realms:
+    - name: myrealm
+      displayName: My Realm
+      enabled: true
+  users:
+    - name: myuser
+      realm: myrealm
+      username: myuser
+      firstName: John
+      lastName: Doe
+      email: myuser@keycloak.org
+      enabled: true
+      credentials:
+        - type: password
+          value: 12345
+  clients:
+    - name: myclient
+      realm: myrealm
+      clientId: myclient
+      protocol: openid-connect
+      rootUrl: https://www.keycloak.org/app/
+
+operatorhub:
+  operators:
+  - name: rhsso-operator
+    namespace: keycloak-helm
+    subscription:
+      channel: alpha
+      approval: Automatic
+      operatorName: rhsso-operator
+      sourceName: redhat-operators
+      sourceNamespace: openshift-marketplace
+      csv: rhsso-operator.7.4.1
+    operatorgroup:
+      create: true
+
