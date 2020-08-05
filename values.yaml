@@ -2,7 +2,7 @@ keycloak:
   name: mykeycloak
   externalAccess:
     enabled: true
-  instances: 3
+  instances: 1
   realms:
     - name: myrealm
       displayName: My Realm
