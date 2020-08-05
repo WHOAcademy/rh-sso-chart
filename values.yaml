@@ -2,7 +2,7 @@ keycloak:
   name: mykeycloak
   externalAccess:
     enabled: true
-  instances: 1
+  instances: 2
   realms:
     - name: myrealm
       displayName: My Realm
@@ -29,7 +29,7 @@ keycloak:
 operatorhub:
   operators:
   - name: rhsso-operator
-    namespace: keycloak-helm
+    namespace: keycloak-test
     subscription:
       channel: alpha
       approval: Automatic
