@@ -8,3 +8,8 @@ helm package .
 
 curl -v -f -u admin:admin123 https://nexus-labs-ci-cd.apps.who.emea-2.rht-labs.com/repository/helm-charts/ --upload-file rh-sso-chart-0.0.1.tgz
 
+
+## Creating and Deleting the Instance with Helm
+helm template --dependency-update rh-sso-chart . | oc apply -f - -n keycloak-helm
+helm template --dependency-update rh-sso-chart . | oc delete -f - -n keycloak-helm
+
