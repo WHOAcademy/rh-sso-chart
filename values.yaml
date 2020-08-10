@@ -29,7 +29,7 @@ keycloak:
 operatorhub:
   operators:
   - name: rhsso-operator
-    namespace: keycloak-helm
+    namespace: who-sso
     subscription:
       channel: alpha
       approval: Automatic
@@ -39,4 +39,3 @@ operatorhub:
       csv: rhsso-operator.7.4.1
     operatorgroup:
       create: true
-
