@@ -16,6 +16,5 @@ spec:
     clientId: {{ $client.clientId }}
     protocol: {{ $client.protocol }}
     rootUrl: {{ $client.rootUrl }}
-    clientAuthenticatorType: {{ $client.clientId }}
 {{- end }}
 {{- end }}
