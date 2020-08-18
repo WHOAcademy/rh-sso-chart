@@ -12,6 +12,7 @@ spec:
     matchLabels:
       realm: {{ $client.realm }}
   client:
+    id: {{ $client.clientId }}
     clientId: {{ $client.clientId }}
     protocol: {{ $client.protocol }}
     rootUrl: {{ $client.rootUrl }}
